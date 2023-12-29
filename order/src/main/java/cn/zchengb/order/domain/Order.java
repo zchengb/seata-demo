@@ -1,6 +1,7 @@
 package cn.zchengb.order.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(schema = "order")
@@ -25,9 +27,11 @@ public class Order {
     private RecordTime recordTime;
 
     public static Order create(long accountId, long stockId, long price, int quantity) {
-        this.accountId = accountId;
-        this.stockId = stockId;
-        this.price = price;
-        this.quantity = quantity;
+        return Order.builder()
+                .accountId(accountId)
+                .stockId(stockId)
+                .price(price)
+                .quantity(quantity)
+                .build();
     }
 }
