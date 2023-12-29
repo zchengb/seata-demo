@@ -1,7 +1,7 @@
 package cn.zchengb.order.infrastructure.client;
 
 import cn.zchengb.order.domain.AccountClient;
-import cn.zchengb.order.infrastructure.client.request.DeductRequest;
+import cn.zchengb.order.infrastructure.client.request.BalanceDeductRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface AccountFeignClient extends AccountClient {
     @Override
     default void deductBalance(long accountId, long price) {
-        deductBalance(accountId, new DeductRequest(price));
+        deductBalance(accountId, new BalanceDeductRequest(price));
     }
 
     @PostMapping("/accounts/{account-id}/balance/deduction")
-    void deductBalance(@PathVariable("account-id") long accountId, @RequestBody DeductRequest request);
+    void deductBalance(@PathVariable("account-id") long accountId, @RequestBody BalanceDeductRequest request);
 }

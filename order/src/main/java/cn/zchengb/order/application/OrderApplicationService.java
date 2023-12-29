@@ -18,6 +18,7 @@ public class OrderApplicationService {
         var price = storageClient.fetchLatestPrice(stockId);
         price = price * quantity;
         accountClient.deductBalance(accountId, price);
+        storageClient.deductStock(stockId, quantity);
 
         var order = Order.create(accountId, stockId, price, quantity);
         orderRepository.save(order);
