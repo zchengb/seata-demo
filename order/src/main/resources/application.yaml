@@ -28,4 +28,4 @@ spring:
         namespace: public
         server-addr: localhost:8848
   config:
-    import: nacos:storage.yaml?refresh=true
+    import: nacos:order.yaml?refresh=true
