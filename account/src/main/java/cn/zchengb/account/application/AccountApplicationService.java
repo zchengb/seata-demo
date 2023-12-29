@@ -10,12 +10,12 @@ public class AccountApplicationService {
     private final AccountRepository accountRepository;
 
     public void balanceDeduct(Long accountId, long deductValue) {
-        if (deductValue < 0) {
+        if (deductValue <= 0) {
             throw new IllegalArgumentException("deduct value must be positive.");
         }
 
         var account = accountRepository.findById(accountId).orElseThrow(
-                () -> new IllegalArgumentException("cannot found account with account id: " + accountId)
+                () -> new IllegalArgumentException("cannot found account")
         );
 
         account.deduct(deductValue);

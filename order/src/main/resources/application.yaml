@@ -17,6 +17,8 @@ seata:
 server:
   port: 8081
 spring:
+  jpa:
+    show-sql: true
   application:
     name: order
   cloud:
