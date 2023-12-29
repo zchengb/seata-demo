@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateOrderRequest {
     private long accountId;
-    private long stockId;
+    private long storageId;
     private int quantity;
 }

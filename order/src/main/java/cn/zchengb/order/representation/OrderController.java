@@ -14,6 +14,6 @@ public class OrderController {
 
     @PostMapping("/orders")
     public void createOrder(@RequestBody CreateOrderRequest request) {
-        orderApplicationService.createOrder(request.getAccountId(), request.getStockId(), request.getQuantity());
+        orderApplicationService.createOrder(request.getAccountId(), request.getStorageId(), request.getQuantity());
     }
 }

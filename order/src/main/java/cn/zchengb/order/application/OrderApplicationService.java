@@ -14,13 +14,13 @@ public class OrderApplicationService {
     private final AccountClient accountClient;
     private final OrderRepository orderRepository;
 
-    public void createOrder(long accountId, long stockId, int quantity) {
-        var price = storageClient.fetchLatestPrice(stockId);
+    public void createOrder(long accountId, long storageId, int quantity) {
+        var price = storageClient.fetchLatestPrice(storageId);
         price = price * quantity;
         accountClient.deductBalance(accountId, price);
-        storageClient.deductStock(stockId, quantity);
+        storageClient.deductStock(storageId, quantity);
 
-        var order = Order.create(accountId, stockId, price, quantity);
+        var order = Order.create(accountId, storageId, price, quantity);
         orderRepository.save(order);
     }
 }

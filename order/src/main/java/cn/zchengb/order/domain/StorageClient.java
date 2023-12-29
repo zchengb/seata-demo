@@ -1,7 +1,7 @@
 package cn.zchengb.order.domain;
 
 public interface StorageClient {
-    long fetchLatestPrice(long stockId);
+    long fetchLatestPrice(long storageId);
 
-    void deductStock(long stockId, int quantity);
+    void deductStock(long storageId, int quantity);
 }
