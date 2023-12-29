@@ -1,0 +1,31 @@
+seata:
+  enabled: true
+  registry:
+    type: nacos
+    nacos:
+      group: DEFAULT_GROUP
+      server-addr: localhost:8848
+  config:
+    type: nacos
+    nacos:
+      group: DEFAULT_GROUP
+      server-addr: localhost:8848
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+server:
+  port: 8082
+spring:
+  application:
+    name: storage
+  cloud:
+    nacos:
+      config:
+        namespace: public
+        server-addr: localhost:8848
+      discovery:
+        namespace: public
+        server-addr: localhost:8848
+  config:
+    import: nacos:storage.yaml?refresh=true
