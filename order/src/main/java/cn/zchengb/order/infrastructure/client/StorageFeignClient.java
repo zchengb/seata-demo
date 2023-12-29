@@ -18,7 +18,7 @@ public interface StorageFeignClient extends StorageClient {
     void deductStorage(@PathVariable("storage-id") long storageId, @RequestBody StorageDeductRequest request);
 
     @Override
-    default void deductStock(long storageId, int quantity) {
+    default void deductStorage(long storageId, int quantity) {
         deductStorage(storageId, new StorageDeductRequest(quantity));
     }
 }

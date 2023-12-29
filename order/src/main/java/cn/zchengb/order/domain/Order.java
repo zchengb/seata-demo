@@ -20,16 +20,16 @@ public class Order {
     @Id
     private Long id;
     private long accountId;
-    private long stockId;
+    private long storageId;
     private long price;
     private int quantity;
     @Embedded
     private RecordTime recordTime;
 
-    public static Order create(long accountId, long stockId, long price, int quantity) {
+    public static Order create(long accountId, long storageId, long price, int quantity) {
         return Order.builder()
                 .accountId(accountId)
-                .stockId(stockId)
+                .storageId(storageId)
                 .price(price)
                 .quantity(quantity)
                 .build();
