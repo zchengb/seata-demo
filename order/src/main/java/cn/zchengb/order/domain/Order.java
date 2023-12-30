@@ -1,18 +1,16 @@
 package cn.zchengb.order.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "order")
+@Table(name = "`order`")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +28,7 @@ public class Order {
                 .storageId(storageId)
                 .price(price)
                 .quantity(quantity)
+                .recordTime(RecordTime.now())
                 .build();
     }
 }

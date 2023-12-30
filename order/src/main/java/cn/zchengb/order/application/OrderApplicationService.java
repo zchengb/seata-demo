@@ -4,6 +4,7 @@ import cn.zchengb.order.domain.AccountClient;
 import cn.zchengb.order.domain.Order;
 import cn.zchengb.order.domain.OrderRepository;
 import cn.zchengb.order.domain.StorageClient;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class OrderApplicationService {
     private final AccountClient accountClient;
     private final OrderRepository orderRepository;
 
+    @GlobalTransactional
     public void createOrder(long accountId, long storageId, int quantity) {
         if (quantity <= 0) {
             throw new IllegalArgumentException("quantity must be positive.");

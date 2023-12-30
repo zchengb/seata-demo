@@ -3,17 +3,16 @@ seata:
   registry:
     type: nacos
     nacos:
+      namespace: eed4a53a-2ee3-482e-ae60-de29641557fe
       group: DEFAULT_GROUP
       server-addr: localhost:8848
   config:
     type: nacos
     nacos:
+      namespace: eed4a53a-2ee3-482e-ae60-de29641557fe
       group: DEFAULT_GROUP
       server-addr: localhost:8848
   tx-service-group: default_tx_group
-  service:
-    vgroup-mapping:
-      default_tx_group: default
 server:
   port: 8080
 spring:
@@ -22,9 +21,10 @@ spring:
   cloud:
     nacos:
       config:
+        namespace: eed4a53a-2ee3-482e-ae60-de29641557fe
         server-addr: localhost:8848
       discovery:
-        namespace: public
+        namespace: eed4a53a-2ee3-482e-ae60-de29641557fe
         server-addr: localhost:8848
   config:
     import: nacos:account.yaml?refresh=true
