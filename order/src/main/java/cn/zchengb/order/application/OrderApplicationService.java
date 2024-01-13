@@ -24,14 +24,11 @@ public class OrderApplicationService {
         }
 
         var price = storageClient.fetchLatestPrice(storageId);
-        log.info("get latest price: {}", price);
         price = price * quantity;
         accountClient.deductBalance(accountId, price);
         storageClient.deductStorage(storageId, quantity);
-        log.info("deduct balance: {}, deduct storage: {}", price, quantity);
 
         var order = Order.create(accountId, storageId, price, quantity);
-        log.info("create order: {}", order);
         orderRepository.save(order);
     }
 }
